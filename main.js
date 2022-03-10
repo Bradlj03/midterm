@@ -12,13 +12,29 @@ You can assume that the 2nd number passed in will always be greater than the fir
 Note: This problem should account for negative number input
 */
 
-function sumOfOdds(){
-
+function sumOfOdds(num1, num2){
+    let arr= []
+  // let negativeNum = []
+    while (num1 <= num2){
+        arr.push(num1);
+        num1 += 1;
+    };
+    
+  console.log("The odd number in the array is:" + " " +arr.filter(n => n % 2))
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 !== 0) {
+      sum = sum + arr[i];
+      }
+    }
+    return sum;
 }
+
+
 
 /* console.logs to test */
 console.log("sumOfOdds");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log("The sum of negative number between your input is:"+ " " + sumOfOdds(3, 20))
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -30,13 +46,21 @@ For exmaple arraySubtract([7,9],[2,6]) should return [5,3]
 You can assume the arrays that are being input are of the same length
 */
 
-function arraySubtract(){
-
+function arraySubtract(arr1, arr2){
+    let answer = [];
+    for( var i = 0; i <arr1.length; i++){
+        answer.push(arr1[i] - arr2[i]);
+    }
+    return answer
+   
 }
+
+
+
 
 /* console.logs to test */
 console.log("arraySubtract");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(arraySubtract([10, 8, 3], [2, 3, 1]))
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -49,13 +73,17 @@ Add the second string to the end of the array
 Return the modified array
 */
 
-function surroundArray(){
+function surroundArray(str1, str2, arrMod){
+   arrMod = []
+   arrMod.unshift(str1); arrMod.push(str2)
+   return arrMod
 
 }
 
+
 /* console.logs to test */
 console.log("surroundArray");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(surroundArray("Jason", "james"))
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -67,13 +95,15 @@ If there is nothing in the array, return an empty string ('')
 You can assume that no two strings will have the same length in the array
 */
 
-function longestString(){
-    
+function longestString(strs) {
+    const longest = strs.reduce((x, y) => x.length >= y.length ? x : y, '' );
+    return longest;
 }
 
+  
 /* console.logs to test */
 console.log("longestString");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(longestString( ["Saab", "Volvo", "BMW"]));
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -85,13 +115,34 @@ If the letter in the original string is uppercase the letter in the output strin
 Do NOT use replaceAll or similar string methods.  If you are unsure what that means, ask before you use a string method!  (toUpperCase() and toLowerCase() should be all you need if anything)
 */
 
-function sToR(){
+function sToR(str) {
+    let solution = "";
+    for (let letter of str) {
+      if (letter === "s") {
+        letter = "r";
+        solution += letter;
+      } else if (letter === "S") {
+        letter = "R";
+        solution += letter;
+      } else if (letter === "r") {
+        letter = "s";
+        solution += letter;
+      } else if (letter === "R") {
+        letter = "S";
+        solution += letter;
+      } else {
+        solution += letter;
+      }
+    }
+    return solution;
+  }
 
-}
+
+console.log('The rain is Raining, but sam, Said Rain ')
 
 /* console.logs to test */
 console.log("sToR");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(sToR('The rain is Raining, but sam, Said Rain '));
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -102,13 +153,17 @@ Write a function divisibleBy4And7 that takes in a number and returns true if it 
 If it is not, return false.
 */
 
-function divisibleBy4And7(){
-
-}
+function divisibleBy4And7(num) {
+    if (num % 4 === 0 && num % 7 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 /* console.logs to test */
 console.log("divisibleBy4And7");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(divisibleBy4And7(28));
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -120,13 +175,19 @@ return true if the string contains both an exclamation point (!) AND a question 
 Return false if otherwise
 */
 
-function exclamationAndQuestion(){
-    
-}
+function exclamationAndQuestion(str) {
+    if (str.includes("!") && str.includes("?")) { 
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
 
 /* console.logs to test */
 console.log("exclamationAndQuestion");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(exclamationAndQuestion("What are are !?"));
+console.log(exclamationAndQuestion("What are are ?"));
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -138,13 +199,23 @@ No need to add the count of A and B together.  Again, we want an array with the 
 Your function should account for both cases (upper and lower) of each letter.
 */
 
-function countAB(){
-
-}
+function countAB(str) {
+    var countOfA = 0;
+    var countofB = 0;
+    var answer = [];
+    for (let it of str) {
+      if (it === "a" || it === "A") {
+        countOfA++;
+      } else if (it === "b" || it === "B") {
+        countofB++;
+      }
+    }
+    return answer.concat(countOfA, countofB);
+  }
 
 /* console.logs to test */
 console.log("countAB");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(countAB("Them bears are so bullish and beat the hell up"));
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
@@ -157,13 +228,23 @@ Finally, return your modified array.
 Example: addStringIfLastS(['test', 'testing', 'testings'], 'TEST') => ['test', 'testing', 'testingsTEST']
 */
 
-function addStringIfLastS(){
-
-}
+function addStringIfLastS(arr, str) {
+    let modifiedArray1 = [];
+    for (let newA of arr) {
+      if (newA.slice(-1) === "s" || newA.slice(-1) === "S") {
+        newA += str;
+        modifiedArray1.push(newA);
+      } else {
+        modifiedArray1.push(newA);
+      }
+    }
+    return modifiedArray1;
+  }
+  
 
 /* console.logs to test */
 console.log("addStringIfLastS");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
+console.log(["car, planes, boat"], " house");
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
